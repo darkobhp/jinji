@@ -1,4 +1,4 @@
-# For Jinji
+# Jinji
 
 A simple static love-letter website for Jinji.
 
