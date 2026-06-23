@@ -4,6 +4,8 @@ const feedback = document.querySelector("#quiz-feedback");
 const countdownPanel = document.querySelector("#countdown-panel");
 const countdown = document.querySelector("#countdown");
 const quizIntro = document.querySelector("#quiz-intro");
+const birthdayCelebration = document.querySelector("#birthday-celebration");
+const ladybugTriggers = [...document.querySelectorAll("[data-ladybug-trigger]")];
 const answers = ["yellow", "kitchen", "harriette"];
 const wrongMessages = [
   "Nope. That answer wandered into the wrong love story. Try again.",
@@ -16,7 +18,9 @@ const correctMessages = [
   "Correct. The letter is yours."
 ];
 const launchTime = Date.UTC(2026, 5, 30, 0, 0, 0);
+let activeLaunchTime = launchTime;
 let countdownTimer;
+let isUnlocking = false;
 
 const normalize = (value) => value.trim().toLowerCase();
 
@@ -46,15 +50,26 @@ function formatCountdown(milliseconds) {
 }
 
 function unlockQuiz() {
+  if (isUnlocking) {
+    return;
+  }
+
+  isUnlocking = true;
   window.clearInterval(countdownTimer);
   countdownPanel.hidden = true;
-  quizForm.hidden = false;
-  quizIntro.textContent = "Three small questions before you may read the letter.";
-  showStep(0, false);
+  birthdayCelebration.hidden = false;
+  quizIntro.textContent = "Today is for celebrating you.";
+
+  window.setTimeout(() => {
+    birthdayCelebration.hidden = true;
+    quizForm.hidden = false;
+    quizIntro.textContent = "Three small questions before you may read the letter.";
+    showStep(0, false);
+  }, 2200);
 }
 
 function updateCountdown() {
-  const remaining = launchTime - Date.now();
+  const remaining = activeLaunchTime - Date.now();
 
   if (remaining <= 0) {
     unlockQuiz();
@@ -63,6 +78,17 @@ function updateCountdown() {
 
   countdown.textContent = formatCountdown(remaining);
 }
+
+ladybugTriggers.forEach((trigger) => {
+  trigger.addEventListener("click", () => {
+    if (isUnlocking) {
+      return;
+    }
+
+    activeLaunchTime = Date.now() + 5000;
+    updateCountdown();
+  });
+});
 
 quizForm.addEventListener("submit", (event) => {
   event.preventDefault();

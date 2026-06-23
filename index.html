@@ -27,6 +27,7 @@
     <main class="page-shell">
       <section class="quiz" aria-labelledby="quiz-title">
         <div class="quiz__backdrop" aria-hidden="true"></div>
+        <button class="quiz__ladybug-trigger" type="button" data-ladybug-trigger tabindex="-1" aria-label="Secret ladybug"></button>
         <article class="quiz__card">
           <p class="quiz__eyebrow">Before the letter</p>
           <h1 id="quiz-title">A little love quiz</h1>
@@ -35,6 +36,11 @@
             <p>Unlocking in</p>
             <p id="countdown" class="quiz__countdown-time">Calculating...</p>
             <p class="quiz__countdown-note">30 June 2026 at 00:00 GMT</p>
+          </div>
+          <div id="birthday-celebration" class="birthday-celebration" role="status" aria-live="polite" hidden>
+            <p aria-hidden="true">🎉 🎂 💛</p>
+            <p>Happy Birthday!</p>
+            <p aria-hidden="true">✨ 🎈 🌹</p>
           </div>
 
           <form id="love-quiz" class="quiz__form" novalidate hidden>
@@ -104,6 +110,11 @@
             Every day with you gives me another reason to believe in the kind of
             love that is patient. You make my world more possible, and I hope I
             spend my life making you feel as cherished as you make me feel.
+          </p>
+          <p>
+            Today, as you celebrate another year of life, I hope it brings you
+            joy, peace, growth, and every beautiful thing your heart hopes for.
+            More than anything, I hope it brings you countless reasons to smile.
           </p>
           <p class="signature">Yours</p>
         </article>

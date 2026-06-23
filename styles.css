@@ -60,6 +60,21 @@ body {
   background-size: cover;
 }
 
+.quiz__ladybug-trigger {
+  position: absolute;
+  z-index: 2;
+  top: 23%;
+  right: 18%;
+  width: 2.2rem;
+  height: 2.2rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: default;
+  opacity: 0;
+}
+
 .quiz::before {
   position: absolute;
   inset: 0;
@@ -69,6 +84,8 @@ body {
 }
 
 .quiz__card {
+  position: relative;
+  z-index: 1;
   width: min(660px, 100%);
   padding: clamp(1.6rem, 5vw, 3.5rem);
   border: 1px solid rgba(243, 203, 88, 0.6);
@@ -125,6 +142,41 @@ body {
 .quiz__countdown-note {
   color: var(--muted);
   font-size: 0.84rem;
+}
+
+.birthday-celebration {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1.45rem 1rem;
+  border: 1px solid rgba(243, 203, 88, 0.58);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--wine);
+  text-align: center;
+  animation: birthday-pop 0.5s ease-out both;
+}
+
+.birthday-celebration p {
+  margin: 0;
+}
+
+.birthday-celebration p:nth-child(2) {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.6rem, 9vw, 4.6rem);
+  font-weight: 700;
+  line-height: 0.95;
+}
+
+@keyframes birthday-pop {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .quiz__form {
@@ -481,6 +533,11 @@ h2 {
 
   .quiz__card {
     padding: 1.5rem;
+  }
+
+  .quiz__ladybug-trigger {
+    top: 20%;
+    right: 11%;
   }
 
   .quiz button {
