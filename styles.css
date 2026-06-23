@@ -101,6 +101,32 @@ body {
   font-size: 1.04rem;
 }
 
+.quiz__countdown {
+  padding: 1.25rem;
+  border: 1px solid rgba(243, 203, 88, 0.46);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.42);
+  text-align: center;
+}
+
+.quiz__countdown p {
+  margin: 0;
+}
+
+.quiz__countdown-time {
+  margin: 0.25rem 0 !important;
+  color: var(--wine);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.2rem, 7vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.quiz__countdown-note {
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
 .quiz__form {
   text-align: left;
 }
@@ -182,6 +208,16 @@ body {
   margin: 1rem 0 0;
   color: var(--red-rose);
   font-weight: 700;
+}
+
+.quiz__feedback.is-correct {
+  color: #55822f;
+}
+
+.quiz button:disabled,
+.quiz input:disabled {
+  cursor: wait;
+  opacity: 0.68;
 }
 
 .hero:focus {

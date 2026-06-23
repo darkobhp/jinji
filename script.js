@@ -1,16 +1,26 @@
 const quizForm = document.querySelector("#love-quiz");
 const steps = [...document.querySelectorAll(".quiz__step")];
 const feedback = document.querySelector("#quiz-feedback");
+const countdownPanel = document.querySelector("#countdown-panel");
+const countdown = document.querySelector("#countdown");
+const quizIntro = document.querySelector("#quiz-intro");
 const answers = ["yellow", "kitchen", "harriette"];
 const wrongMessages = [
   "Nope. That answer wandered into the wrong love story. Try again.",
   "A beautiful guess, but Baby Goat would like you to think a little harder.",
-  "don't lie to yourself, you and I know the correct answer."
+  "don't lie to yourself, you and I know the correct answer🌚"
 ];
+const correctMessages = [
+  "That is right. On to the next question...",
+  "Correct. You are doing very well. One more question...",
+  "Correct. The letter is yours."
+];
+const launchTime = Date.UTC(2026, 5, 30, 0, 0, 0);
+let countdownTimer;
 
 const normalize = (value) => value.trim().toLowerCase();
 
-function showStep(index) {
+function showStep(index, shouldFocus = true) {
   steps.forEach((step, stepIndex) => {
     const isCurrent = stepIndex === index;
     step.classList.toggle("is-active", isCurrent);
@@ -18,8 +28,40 @@ function showStep(index) {
   });
 
   feedback.textContent = "";
+  feedback.classList.remove("is-correct");
   const input = steps[index].querySelector("input");
-  input.focus();
+  if (shouldFocus) {
+    input.focus();
+  }
+}
+
+function formatCountdown(milliseconds) {
+  const totalSeconds = Math.max(0, Math.floor(milliseconds / 1000));
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  return `${days}d ${String(hours).padStart(2, "0")}h ${String(minutes).padStart(2, "0")}m ${String(seconds).padStart(2, "0")}s`;
+}
+
+function unlockQuiz() {
+  window.clearInterval(countdownTimer);
+  countdownPanel.hidden = true;
+  quizForm.hidden = false;
+  quizIntro.textContent = "Three small questions before you may read the letter.";
+  showStep(0, false);
+}
+
+function updateCountdown() {
+  const remaining = launchTime - Date.now();
+
+  if (remaining <= 0) {
+    unlockQuiz();
+    return;
+  }
+
+  countdown.textContent = formatCountdown(remaining);
 }
 
 quizForm.addEventListener("submit", (event) => {
@@ -30,17 +72,28 @@ quizForm.addEventListener("submit", (event) => {
 
   if (normalize(input.value) !== answers[currentIndex]) {
     feedback.textContent = wrongMessages[currentIndex];
+    feedback.classList.remove("is-correct");
     input.select();
     return;
   }
 
+  feedback.textContent = correctMessages[currentIndex];
+  feedback.classList.add("is-correct");
+  input.disabled = true;
+  steps[currentIndex].querySelector("button").disabled = true;
+
   if (currentIndex < steps.length - 1) {
-    showStep(currentIndex + 1);
+    window.setTimeout(() => showStep(currentIndex + 1), 1350);
     return;
   }
 
-  document.body.classList.remove("quiz-locked");
-  document.body.classList.add("quiz-complete");
-  document.querySelector(".quiz").setAttribute("hidden", "");
-  document.querySelector(".hero").focus();
+  window.setTimeout(() => {
+    document.body.classList.remove("quiz-locked");
+    document.body.classList.add("quiz-complete");
+    document.querySelector(".quiz").setAttribute("hidden", "");
+    document.querySelector(".hero").focus();
+  }, 1350);
 });
+
+countdownTimer = window.setInterval(updateCountdown, 1000);
+updateCountdown();

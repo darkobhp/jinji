@@ -30,11 +30,16 @@
         <article class="quiz__card">
           <p class="quiz__eyebrow">Before the letter</p>
           <h1 id="quiz-title">A little love quiz</h1>
-          <p class="quiz__intro">Three small questions before you may read the letter.</p>
+          <p id="quiz-intro" class="quiz__intro">This letter is waiting for its moment.</p>
+          <div id="countdown-panel" class="quiz__countdown" role="status" aria-live="polite">
+            <p>Unlocking in</p>
+            <p id="countdown" class="quiz__countdown-time">Calculating...</p>
+            <p class="quiz__countdown-note">30 June 2026 at 00:00 GMT</p>
+          </div>
 
-          <form id="love-quiz" class="quiz__form" novalidate>
+          <form id="love-quiz" class="quiz__form" novalidate hidden>
             <fieldset class="quiz__step is-active" data-step="1">
-              <legend>What was the color of the dress when I first saw the love of my life?</legend>
+              <legend>What was the color of her dress when I first saw the love of my life?</legend>
               <label for="answer-one">Your answer</label>
               <input id="answer-one" name="answer-one" type="text" autocomplete="off" required>
               <button type="submit">Next question</button>
@@ -80,9 +85,8 @@
           <h2>Dear Jinji,</h2>
           <div class="letter__divider" aria-hidden="true"></div>
           <p>
-            I wanted to make something simple and beautiful for you, because the
-            way I love you is both: simple in its truth, beautiful in every way it
-            has changed my life.
+            I wanted to make something simple and beautiful for you, because I
+            love you.
           </p>
           <p>
             You are the soft part of my day, the thought I return to without
@@ -91,24 +95,15 @@
             a voice, a laugh, a hand to hold, and a heart that understands mine.
           </p>
           <p>
-            I love the way you exist in the world. I love your tenderness, your
-            strength, your humor, your warmth, and the little details that make
-            you unmistakably you. I love the life we are building in quiet ways,
-            in hopeful ways, in ways that make the future feel less far away.
-          </p>
-          <p>
-            If this page is ever found by anyone else, let it be known plainly:
-            Jinji is the love of my life. I am grateful for you, proud of you,
-            and endlessly lucky to love you.
+            I love your tenderness, your strength, your humor, your warmth, and
+            the little details that make you, you. I love the life we are building
+            in quiet ways, in hopeful ways, in ways that make the future feel less
+            far away.
           </p>
           <p>
             Every day with you gives me another reason to believe in the kind of
-            love that is patient, steady, and still full of wonder. You make my
-            world feel softer, brighter, and more possible, and I hope I spend my
-            life making you feel as cherished as you make me feel.
-          </p>
-          <p>
-            Always, and in all the ways I know how,
+            love that is patient. You make my world more possible, and I hope I
+            spend my life making you feel as cherished as you make me feel.
           </p>
           <p class="signature">Yours</p>
         </article>
