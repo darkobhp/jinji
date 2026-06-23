@@ -23,9 +23,45 @@
     >
     <link rel="stylesheet" href="styles.css">
   </head>
-  <body>
+  <body class="quiz-locked">
     <main class="page-shell">
-      <section class="hero" aria-label="Love letter for Jinji">
+      <section class="quiz" aria-labelledby="quiz-title">
+        <div class="quiz__backdrop" aria-hidden="true"></div>
+        <article class="quiz__card">
+          <p class="quiz__eyebrow">Before the letter</p>
+          <h1 id="quiz-title">A little love quiz</h1>
+          <p class="quiz__intro">Three small questions before you may read the letter.</p>
+
+          <form id="love-quiz" class="quiz__form" novalidate>
+            <fieldset class="quiz__step is-active" data-step="1">
+              <legend>What was the color of the dress when I first saw the love of my life?</legend>
+              <label for="answer-one">Your answer</label>
+              <input id="answer-one" name="answer-one" type="text" autocomplete="off" required>
+              <button type="submit">Next question</button>
+            </fieldset>
+
+            <fieldset class="quiz__step" data-step="2" disabled>
+              <legend>What is my favorite song, or arguably my favorite song of all time?</legend>
+              <p class="quiz__hint">Clue: Baby Goat. Type the title of the song alone.</p>
+              <label for="answer-two">Song title</label>
+              <input id="answer-two" name="answer-two" type="text" autocomplete="off" required>
+              <button type="submit">Next question</button>
+            </fieldset>
+
+            <fieldset class="quiz__step" data-step="3" disabled>
+              <legend>Who kissed who first?</legend>
+              <p class="quiz__hint">Type first name alone.</p>
+              <label for="answer-three">First name</label>
+              <input id="answer-three" name="answer-three" type="text" autocomplete="off" required>
+              <button type="submit">Open the letter</button>
+            </fieldset>
+
+            <p id="quiz-feedback" class="quiz__feedback" role="status" aria-live="polite"></p>
+          </form>
+        </article>
+      </section>
+
+      <section class="hero" aria-label="Love letter for Jinji" tabindex="-1">
         <div class="hero__backdrop" aria-hidden="true"></div>
         <div class="hero__content">
           <p class="eyebrow">A letter for the one I love</p>
@@ -78,5 +114,6 @@
         </article>
       </section>
     </main>
+    <script src="script.js" defer></script>
   </body>
 </html>
