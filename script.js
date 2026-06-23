@@ -4,7 +4,6 @@ const feedback = document.querySelector("#quiz-feedback");
 const countdownPanel = document.querySelector("#countdown-panel");
 const countdown = document.querySelector("#countdown");
 const quizIntro = document.querySelector("#quiz-intro");
-const birthdayCelebration = document.querySelector("#birthday-celebration");
 const ladybugTriggers = [...document.querySelectorAll("[data-ladybug-trigger]")];
 const answers = ["yellow", "kitchen", "harriette"];
 const wrongMessages = [
@@ -57,15 +56,9 @@ function unlockQuiz() {
   isUnlocking = true;
   window.clearInterval(countdownTimer);
   countdownPanel.hidden = true;
-  birthdayCelebration.hidden = false;
-  quizIntro.textContent = "Today is for celebrating you.";
-
-  window.setTimeout(() => {
-    birthdayCelebration.hidden = true;
-    quizForm.hidden = false;
-    quizIntro.textContent = "Three small questions before you may read the letter.";
-    showStep(0, false);
-  }, 2200);
+  quizForm.hidden = false;
+  quizIntro.textContent = "Three small questions before you may read the letter.";
+  showStep(0, false);
 }
 
 function updateCountdown() {

@@ -37,22 +37,18 @@
             <p id="countdown" class="quiz__countdown-time">Calculating...</p>
             <p class="quiz__countdown-note">30 June 2026 at 00:00 GMT</p>
           </div>
-          <div id="birthday-celebration" class="birthday-celebration" role="status" aria-live="polite" hidden>
-            <p aria-hidden="true">🎉 🎂 💛</p>
-            <p>Happy Birthday!</p>
-            <p aria-hidden="true">✨ 🎈 🌹</p>
-          </div>
-
           <form id="love-quiz" class="quiz__form" novalidate hidden>
             <fieldset class="quiz__step is-active" data-step="1">
-              <legend>What was the color of her dress when I first saw the love of my life?</legend>
+              <legend class="sr-only">Question one</legend>
+              <h2 class="quiz__question">What was the color of her dress when I first saw the love of my life?</h2>
               <label for="answer-one">Your answer</label>
               <input id="answer-one" name="answer-one" type="text" autocomplete="off" required>
               <button type="submit">Next question</button>
             </fieldset>
 
             <fieldset class="quiz__step" data-step="2" disabled>
-              <legend>What is my favorite song, or arguably my favorite song of all time?</legend>
+              <legend class="sr-only">Question two</legend>
+              <h2 class="quiz__question">What is my favorite song, or arguably my favorite song of all time?</h2>
               <p class="quiz__hint">Clue: Baby Goat. Type the title of the song alone.</p>
               <label for="answer-two">Song title</label>
               <input id="answer-two" name="answer-two" type="text" autocomplete="off" required>
@@ -60,7 +56,8 @@
             </fieldset>
 
             <fieldset class="quiz__step" data-step="3" disabled>
-              <legend>Who kissed who first?</legend>
+              <legend class="sr-only">Question three</legend>
+              <h2 class="quiz__question">Who kissed who first?</h2>
               <p class="quiz__hint">Type first name alone.</p>
               <label for="answer-three">First name</label>
               <input id="answer-three" name="answer-three" type="text" autocomplete="off" required>
@@ -77,9 +74,6 @@
         <div class="hero__content">
           <p class="eyebrow">A letter for the one I love</p>
           <h1>For Jinji</h1>
-          <p class="intro">
-            My favorite place in the world is wherever your heart is near mine.
-          </p>
         </div>
       </section>
 
